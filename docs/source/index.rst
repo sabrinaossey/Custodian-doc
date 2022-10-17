@@ -1,7 +1,7 @@
 About Swiss Data Custodian
 ===================================
 
-**Custodian** is a system for secure data sharing and processing.
+**Swiss Data Custodian** is a governance system for secure and privacy-preserving data sharing and processing.
 
 Check out the :doc:`usage` section for further information, including
 how to :ref:`installation` the project.
