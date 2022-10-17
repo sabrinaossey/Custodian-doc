@@ -15,5 +15,6 @@ Contents
 
 .. toctree::
 
-   usage
-   api
+   About Swiss Data Custodian
+   Concept
+   API
