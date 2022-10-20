@@ -1,206 +1,73 @@
-<p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/logo.svg" width="320" alt="Material for MkDocs">
-  </a>
-</p>
+Example: Basic MkDocs project for Read the Docs
+===============================================
 
-<p align="center">
-  <strong>
-    A 
-    <a href="https://material.io/">Material Design</a> 
-    theme for 
-    <a href="https://www.mkdocs.org/">MkDocs</a>
-  </strong>
-</p>
+[![Documentation Status](https://readthedocs.org/projects/example-mkdocs-basic/badge/?version=latest)](https://example-mkdocs-basic.readthedocs.io/en/latest/?badge=latest)
 
-<p align="center">
-  <a href="https://github.com/squidfunk/mkdocs-material/actions"><img
-    src="https://github.com/squidfunk/mkdocs-material/workflows/build/badge.svg?branch=master"
-    alt="Build"
-  /></a>
-  <a href="https://pypistats.org/packages/mkdocs-material"><img
-    src="https://img.shields.io/pypi/dm/mkdocs-material.svg" 
-    alt="Downloads"
-  /></a>
-  <a href="https://gitter.im/squidfunk/mkdocs-material"><img 
-    src="https://badges.gitter.im/squidfunk/mkdocs-material.svg" 
-    alt="Chat on Gitter"
-  /></a>
-  <a href="https://pypi.org/project/mkdocs-material"><img 
-    src="https://img.shields.io/pypi/v/mkdocs-material.svg" 
-    alt="Python Package Index"
-  /></a>
-  <a href="https://hub.docker.com/r/squidfunk/mkdocs-material/"><img 
-    src="https://img.shields.io/docker/pulls/squidfunk/mkdocs-material" 
-    alt="Docker Pulls"
-  /></a>
-</p>
+This example shows a basic MkDocs project with Read the Docs. You're encouraged to view it to get inspiration and copy & paste from the files in the source code. If you are using Read the Docs for the first time, have a look at the official [Read the Docs Tutorial](https://docs.readthedocs.io/en/stable/tutorial/index.html).
 
-<p align="center">
-  Create a branded static site from a set of Markdown files to host the
-  documentation of your Open Source or commercial project – customizable,
-  searchable, mobile-friendly, 40+ languages. Set up in 5 minutes.
-</p>
+📚 [docs/](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/)<br>
+A basic MkDocs project lives in `docs/`, it was generated using MkDocs defaults. All the `*.md` make up sections in the documentation.
 
-<p align="center">
-  <a href="https://squidfunk.github.io/mkdocs-material/getting-started/">
-    <img src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/screenshot.png" width="700" />
-  </a>
-</p>
+⚙️ [.readthedocs.yaml](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/.readthedocs.yaml)<br>
+Read the Docs Build configuration is stored in `.readthedocs.yaml`.
 
-<p align="center">
-  <em>
-    Check out the demo – 
-    <a
-      href="https://squidfunk.github.io/mkdocs-material/"
-    >squidfunk.github.io/mkdocs-material</a>.
-  </em>
-</p>
+⚙️ [mkdocs.yml](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/mkdocs.yaml)<br>
+A basic [MkDocs configuration](https://www.mkdocs.org/user-guide/configuration/) is stored here, including a few extensions for MkDocs and Markdown. Add your own configurations here, such as extensions and themes. Remember that many extensions and themes require additional Python packages to be installed.
 
-<h2></h2>
-<p>&nbsp;</p>
-<p id="premium-sponsors" align="center"><strong>Special thanks</strong> to our <strong>premium sponsors</strong>:</p>
-<p>&nbsp;</p>
-<p align="center">
-  <a href="https://hummingbot.io/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/hummingbot.png" height="40"
-  /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://docs.baslerweb.com/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/basler.png" height="40"
-  /></a>&nbsp;&nbsp;
-  <a href="https://cirrus-ci.org/" target=_blank><img
-    src="https://raw.githubusercontent.com/squidfunk/mkdocs-material/master/.github/assets/sponsors/cirrus-ci.svg" height="40"
-  /></a>
-</p>
-<p>&nbsp;</p>
+📍 [docs/requirements.txt](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/requirements.txt) and [docs/requirements.in](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/requirements.in)<br>
+Python dependencies are [pinned](https://docs.readthedocs.io/en/latest/guides/reproducible-builds.html) (uses [pip-tools](https://pip-tools.readthedocs.io/en/latest/)) here. Make sure to add your Python dependencies to `requirements.txt` or if you choose [pip-tools](https://pip-tools.readthedocs.io/en/latest/), edit `docs/requirements.in` and remember to run to run `pip-compile docs/requirements.in`.
 
-## Features
+💡 [docs/api.md](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/api.md)<br>
+We add our example Python module `lumache` in order to auto-generate an API reference. To do this, we use the `:::` syntax, you can read more in the [mkdocstrings documentation](https://mkdocstrings.github.io/).
 
-* **It's just Markdown ...** — write your technical documentation in Markdown –
-  no need to know HTML, JavaScript or CSS. Material for MkDocs will do the heavy
-  lifting and create a beautiful and functional website.
+💡 [docs/usage.md](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/docs/usage.md)<br>
+We also include some direct links to a function from the API reference, as well as embedding documentation for the example function `lumache.get_random_recipe`. This functionality is also from the [mkdocstrings](https://mkdocstrings.github.io/python/) extension.
 
-* **... but there's more** — integrates natively with Python Markdown
-  Extensions, adding callouts, tabbed content containers, mathematical formulas,
-  critic markup, task lists, and [more than 10k icons and emojis][2].
+💡 [lumache.py](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/lumache.py)<br>
+API docs are generated for this example Python module - they use *docstrings* directly in the documentation, notice how this shows up in the rendered documentation. We use the [Sphinx convention](https://pythonhosted.org/an_example_pypi_project/sphinx.html#function-definitions) for docstrings, however you are free to edit `mkdocs.yml` to change this option to `google` or `numpy`.
 
-* **Responsive by design** — built from the ground up to work on all kinds of
-  devices – from mobile phones to widescreens. The underlying fluid layout will
-  always adapt perfectly to the available screen space.
+🔢 Git tags versioning<br>
+We use a basic versioning mechanism by adding a git tag for every release of the example project. All releases and their version numbers are visible on
+[example-mkdocs-basic.readthedocs.io](https://example-mkdocs-basic.readthedocs.io/en/latest/).
 
-* **Static, but searchable** — almost magically, your technical documentation
-  website will be searchable without any further ado. Material for MkDocs comes
-  with built-in search – no server needed.
+📜 [README.rst](https://github.com/readthedocs-examples/example-mkdocs-basic/blob/main/README.rst)<br>
+Contents of this `README.md` are visible on Github and included on [the documentation index page](https://example-mkdocs-basic.readthedocs.io/en/latest/) (Don\'t Repeat Yourself).
 
-* **Many configuration options** — change the color palette, font families,
-  language, icons, favicon and logo. Add a source repository link, links to your
-  social profiles, Google Analytics and Disqus - all with a few lines of config.
+⁉️ Questions / comments<br>
+If you have questions related to this example, feel free to can ask them as a Github issue [here](https://github.com/readthedocs-examples/example-mkdocs-basic/issues).
 
-* **Truly international** — thanks to many contributors, Material for MkDocs
-  includes translations for more than 40 languages and offers full native RTL
-  (right-to-left) support.
 
-* **Accessible** — Material for MkDocs provides extensible keyboard navigation
-  and semantic markup including role attributes and landmarks. Furthermore, the
-  layout respects the user's default font size.
+Example Project usage
+---------------------
 
-* **Modern architecture** — Material for MkDocs's underlying codebase is built
-  on top of TypeScript, RxJS, and SCSS, bringing excellent possibilities for
-  theme extension and customization.
+This project has a standard MkDocs layout which is built by Read the Docs almost the same way that you would build it locally (on your own laptop!).
 
-_Material for MkDocs uses the [sponsorware][3] release strategy, which means
-that new features are first exclusively released to sponsors as part of Material
-for MkDocs Insiders. Read on to learn [how sponsorship works][4], and how you
-can [become a sponsor][5]._
+You can build and view this documentation project locally - we recommend that you activate [a local Python virtual environment first](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment):
 
-  [2]: https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#search
-  [3]: https://github.com/sponsorware/docs
-  [4]: https://squidfunk.github.io/mkdocs-material/insiders/#how-sponsorship-works
-  [5]: https://squidfunk.github.io/mkdocs-material/insiders/#how-to-become-a-sponsor
+```console
+# Install required Python dependencies (MkDocs etc.)
+pip install -r docs/requirements.txt
 
-## Quick start
-
-Material for MkDocs can be installed with `pip`:
-
-``` sh
-pip install mkdocs-material
+# Run the mkdocs development server
+mkdocs serve
 ```
 
-Add the following line to `mkdocs.yml`:
+Using the example in your own project
+-------------------------------------
 
-``` yaml
-theme:
-  name: material
-```
+If you are new to Read the Docs, you may want to refer to the [Read the Docs User documentation](https://docs.readthedocs.io/).
 
-For other installation methods, configuration options, and a demo, visit
-[squidfunk.github.io/mkdocs-material][1]
+If you are copying this code in order to get started with your documentation, you need to:
 
-  [1]: https://squidfunk.github.io/mkdocs-material/
+1. place your `docs/` folder alongside your Python project. If you are starting a new project, you can adapt the `pyproject.toml` example configuration.
+1. use your existing project repository or create a new repository on Github, GitLab, Bitbucket or another host supported by Read the Docs.
+1. copy `mkdocs.yml`, `.readthedocs.yaml` and the `docs/` folder into your project.
+1. customize all the files, replacing example contents.
+1. Rebuild the documenation locally to see that it works.
+1. *Finally*, register your project on Read the Docs, see [Importing Your Documentation](https://docs.readthedocs.io/en/stable/intro/import-guide.html).
 
-## Trusted by ...
 
-### ... leading organizations
+Read the Docs tutorial
+----------------------
 
-[Atlassian](https://atlassian.github.io/data-center-helm-charts/),
-[AWS](https://aws.github.io/copilot-cli/),
-[Binance](https://docs.binance.org/),
-[Bloomberg](https://bloomberg.github.io/selekt/),
-[CERN](http://abpcomputing.web.cern.ch/),
-[Datadog](https://datadoghq.dev/integrations-core/),
-[Google](https://google.github.io/accompanist/),
-[ING](https://ing-bank.github.io/baker/),
-[Intel](https://open-amt-cloud-toolkit.github.io/docs/),
-[LinkedIn](https://linkedin.github.io/school-of-sre/),
-[Microsoft](https://microsoft.github.io/code-with-engineering-playbook/),
-[Mozilla](https://mozillafoundation.github.io/engineering-handbook/),
-[Netflix](https://netflix.github.io/titus/),
-[Salesforce](https://policy-sentry.readthedocs.io/en/latest/),
-[SoundCloud](https://intervene.dev/),
-[Square](https://square.github.io/okhttp/),
-[Zalando](https://opensource.zalando.com/skipper/)
-
-### ... and successful Open Source projects
-
-[Arduino](https://arduino.github.io/arduino-cli/),
-[AutoKeras](https://autokeras.com/),
-[BFE](https://www.bfe-networks.net/),
-[Crystal](https://crystal-lang.org/reference/),
-[Electron](https://www.electron.build/),
-[FastAPI](https://fastapi.tiangolo.com/),
-[Knative](https://knative.dev/docs/),
-[Kubernetes](https://kops.sigs.k8s.io/),
-[kSQL](https://docs.ksqldb.io/),
-[Nokogiri](https://nokogiri.org/),
-[OpenFaaS](https://docs.openfaas.com/),
-[Pi-Hole](https://docs.pi-hole.net/),
-[Pydantic](https://pydantic-docs.helpmanual.io/),
-[Renovatebot](https://docs.renovatebot.com/),
-[Traefik](https://docs.traefik.io/),
-[Vapor](https://docs.vapor.codes/),
-[ZeroNet](https://zeronet.io/docs/),
-[WTF](https://wtfutil.com/)
-
-## License
-
-**MIT License**
-
-Copyright (c) 2016-2021 Martin Donath
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to
-deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-sell copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
-IN THE SOFTWARE.
+To get started with Read the Docs, you may also refer to the [Read the Docs tutorial](https://docs.readthedocs.io/en/stable/tutorial/). It provides a full walk-through of building an example project similar to the one in this repository.
