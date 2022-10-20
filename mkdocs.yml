@@ -1,0 +1,13 @@
+site_name: Custodian
+
+theme:
+  name: "material"
+
+# Page tree
+nav:
+  - Home: index.md
+  - Getting started:
+    - Installation: getting-started.md
+  - Concept:
+    - Overview: concept.md
+    - Architecture: architecture.md
