@@ -4,6 +4,8 @@ Custodian is an open-source platform for privacy-preserving data sharing and pro
 
 This repository contains the documentation.
 
+## Support
+
 ## Code of conduct
 
 
