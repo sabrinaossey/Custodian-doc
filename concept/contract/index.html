@@ -13,7 +13,7 @@
     
     
       
-        <title>Components - Custodian</title>
+        <title>Contract - Custodian</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#components" class="md-skip">
+        <a href="#contract-manager" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Components
+              Contract
             
           </span>
         </div>
@@ -256,14 +256,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
       
       
       
@@ -298,59 +296,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Components
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../components/" class="md-nav__link">
         Components
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#access-control-system" class="md-nav__link">
-    Access Control system
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contract-manager" class="md-nav__link">
-    Contract Manager
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -499,15 +449,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#access-control-system" class="md-nav__link">
-    Access Control system
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#contract-manager" class="md-nav__link">
-    Contract Manager
+  <a href="#contract-description" class="md-nav__link">
+    Contract Description
   </a>
   
 </li>
@@ -527,19 +470,105 @@
                   
 
 
-<h1 id="components">Components</h1>
-<p>This section helps you learn about the components of the Swiss Data Science system and helps you to have a deeper understanding of how it works.</p>
-<h2 id="access-control-system"><a href="../acs/">Access Control system</a></h2>
-<p>The system for managing access to the ressources.
-concept/acs.md</p>
-<h2 id="contract-manager"><a href="../contract/">Contract Manager</a></h2>
-<p>The contract manager provides a Workflow for processing contracts for data sharing and processing.
-A Contract workflow as the following step:
-1. Contract Template Creation
-2. Contract Approvals
-3. Contract Signatures
-4. Contract Execution
-5. Contract Revocation</p>
+<h1 id="contract-manager">Contract Manager</h1>
+<p>The Contract Manager (UCM) provides end-point REST apis to create and manage contracts.</p>
+<p>A Contract is a binding agreement between parties based on agreed-upon terms and conditions for data sharing and processing.
+A contract is readable by both people and machines. It is also cryptographically signed and verified against some security proofs.</p>
+<h2 id="contract-description">Contract Description</h2>
+<ul>
+<li>Contract Body</li>
+</ul>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;did:custodian:12345678abcdefgh&quot;,
+  &quot;tag&quot;: [
+      {
+          &quot;name&quot;: &quot;provider&quot;,
+          &quot;value&quot;: &quot;#provider&quot;
+      },
+      {
+          &quot;name&quot;: &quot;consumer&quot;,
+          &quot;value&quot;: &quot;#consumer&quot;
+      },
+  ],
+  &quot;contract&quot;: [
+      {
+         &quot;lang&quot;: &quot;en&quot;,
+         &quot;title&quot;: &quot;End User Agreement&quot;,
+        &quot;description&quot;: &quot;...&quot;,
+      }
+  ],
+  &quot;var&quot;: [
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#provider&quot;,
+          &quot;type&quot;:  &quot;oid&quot;,
+          &quot;regexp&quot;: &quot;did:custodian:[0-9a-zA-Z_-]&quot;
+      },
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#consumer&quot;,
+          &quot;value&quot;: &quot;did:custodian:1234abcd5678efgh&quot;
+      }
+  ],
+  &quot;subject&quot;:  [
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#subj-1&quot;,
+          &quot;attribute&quot;: {
+            &quot;oid&quot;:  &quot;#provider&quot;,
+            &quot;sign&quot;: [ &quot;#id&quot; ]
+          }
+      },
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#subj-2&quot;,
+          &quot;attribute&quot;: {
+              &quot;oid&quot;:  &quot;#consumer&quot;,
+              &quot;sign&quot;: [ &quot;#id&quot; ]
+          }
+      }
+  ],
+  &quot;verb&quot;: [
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#read&quot;,
+          &quot;function&quot;: &quot;custodian.epfl.ch/select?query=*&quot;,
+          &quot;attribute&quot;: {
+              &quot;max_calls_per_day&quot;: 3
+          }
+      },
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#add&quot;,
+          &quot;function&quot;: &quot;custodian.epfl.ch/add&quot;,
+          &quot;attribute&quot;: {}
+      }
+  ],
+  &quot;object&quot;: [
+      {
+          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#obj-1&quot;,
+          &quot;owner&quot;: &quot;#subj-1&quot;,
+          &quot;attribute&quot;: {
+              &quot;sensitivity&quot;: {
+                  &quot;op&quot;: &quot;lt&quot;,
+                  &quot;level&quot;: 7
+              }
+        }
+      }
+  ],
+  &quot;scope&quot;:  [
+      {
+          &quot;subject&quot;: [ &quot;#subj-1&quot;, &quot;#subj-2&quot; ], &quot;verb&quot;: [ &quot;#read&quot; ], &quot;object&quot;: [ &quot;#obj-1&quot; ]
+      },
+      {
+          &quot;subject&quot;: [ &quot;#subj-2&quot; ], &quot;verb&quot;: [ &quot;#add&quot; ], &quot;object&quot;: [ &quot;#obj-1&quot; ]
+      }
+  ],
+  &quot;validity&quot;: {
+      &quot;notBefore&quot; : &quot;2022-01-01T00:00:00Z&quot;,
+      &quot;notAfter&quot;  : &quot;2022-12-01T23:59:59Z&quot;,
+      &quot;duration&quot;   : &quot;1Y&quot;,
+      &quot;sign&quot; : [ &quot;#provider&quot;, &quot;#consumer&quot; ]
+   }
+}
+</code></pre>
+<ul>
+<li>Digital Signatures</li>
+</ul>
 
 
 
@@ -555,42 +584,6 @@ A Contract workflow as the following step:
       </main>
       
         <footer class="md-footer">
-  
-    
-    <nav class="md-footer__inner md-grid" aria-label="Footer" >
-      
-        
-        <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Overview
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../../roadmap/future/" class="md-footer__link md-footer__link--next" aria-label="Next: Future" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Future
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
