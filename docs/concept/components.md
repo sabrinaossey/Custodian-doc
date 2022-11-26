@@ -8,18 +8,7 @@ The system for managing access to the ressources.
 concept/acs.md
 
 
-## Contract
-
-A Contract is a binding agreement between parties based on agreed-upon terms and conditions for data sharing and processing.
-A contract is cryptographically signed and verified against some security proofs and is readable by both people and machines.
-
-## Contract Description
-
-* Contract Body
-* Digital Signatures
-
-## Contract Manager
-
+## [Contract Manager](./contract.md)
 The contract manager provides a Workflow for processing contracts for data sharing and processing.
 A Contract workflow as the following step:
 1. Contract Template Creation
