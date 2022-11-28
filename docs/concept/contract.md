@@ -10,33 +10,17 @@ A contract consist of a contract body that describes the terms of the contract a
 
 **Elements of Contract Body**
 
-| Entry| Required| Description|
-| --- | --- | --- |
-| `id` | yes | A globally unique contract identifier |
-| `tag` | no |The list of tag **(name, value)** pairs that can be used to index the contract for faster retrieval|
-| `tag[].name` | yes | Name of a tag |
-| `tag[].value` | yes | The value of the named tag. It can be a constant or a reference to a variable declared in var[], and can be null if the variable is not set|
-| `contract` | yes | A list of human-readable descriptions of the contract|
-| `contract[].lang` | yes |A 2-letter code of the language used for the contract|
-| `contract[].title` | yes | A short title|
-| `contract[].description` | yes |A human-readable descriptions of the contract|
-| `var` | no | The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract |
-| `var[].id` | no |The local identifier used to dereference the variable|
-| `var[].value` | no | The value of the variable. Once set, it cannot be modified or removed from the contract |
-| `var[].(regexp|type)` | no | Restricts the set of values the variable can take if it is still undefined, ignored otherwise |
-| `subject` | yes |The list of subjects who may perform the operations described in the contract|
-| `subject[].id` | yes | The local identifier used to dereference the subject |
-| `subject[].attribute` | yes | A list of expressions on the subject attributes that must satisfied in order for the subject to be considered in that group.|
-| `verb` | yes | The list of allowed operations |
-| `verb[].id` | yes |The local identifier used to dereference the verb|
-| `verb[].function` | yes | The actual command represented by the verb (e.g., method identifier, query pattern,...) |
-| `verb[].attribute` | yes | A list of additional attributes describing the verb|
-| `object` | yes | The list of resources that subjects are permitted to operate on |
-| `object[].id` | yes |The local identifier used to dereference the object.|
-| `object[].owner` | yes | Local identifier of the object owner. |
-| `object[].attribute` | yes |A list of expressions on the object attributes that must satisfied in order for the object to be considered in that group.|
-| `scope` | yes | The list of permitted **subject, verb, object** triplets. |
-| `validity` | yes |The conditions used to verify the validity of the contract.|
+| Entry| Required| Description| Schema|
+| --- | --- | --- |--- |
+| `id` | yes | A globally unique contract identifier | -|
+| `tag` | no |The list of tag **(name, value)** pairs that can be used to index the contract for faster retrieval| [Tag](./schema.md#Tag)|
+| `contract` | yes | A list of human-readable descriptions of the contract| [Contract](./schema.md#Contract)|
+| `var` | no | The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract | [Var](./schema.md#Var)|
+| `subject` | yes |The list of subjects who may perform the operations described in the contract| [Subject](./schema.md#Subject)|
+| `verb` | yes | The list of allowed operations | [Verb](./schema.md#Verb)|
+| `object` | yes | The list of resources that subjects are permitted to operate on | [Object](./schema.md#Object)|
+| `scope` | yes | The list of permitted **subject, verb, object** triplets. | -|
+| `validity` | yes |The conditions used to verify the validity of the contract.| -|
 
 
 <details><summary>Example of Contrat Body in Json format</summary>
