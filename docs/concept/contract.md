@@ -1,5 +1,5 @@
 #Contract Manager
-The Contract Manager (UCM) provides end-point REST apis to create and manage contracts.
+The Contract Manager (UCM) provides REST end-points to create and manage contracts.
 
 A Contract is a binding agreement between parties based on agreed-upon terms and conditions for data sharing and processing.
 A contract is readable by both people and machines. It is also cryptographically signed and verified against some security proofs.
