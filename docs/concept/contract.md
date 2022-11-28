@@ -6,8 +6,41 @@ A contract is readable by both people and machines. It is also cryptographically
 
 ## Contract Description
 
-* Contract Body
+A contract consist of a contract body that describes the terms of the contract and a list of digital signatures of the parties involved in.
 
+**Elements of Contract Body**
+
+| Entry| Required| Description|
+| --- | --- | --- |
+| `id` | yes | A globally unique contract identifier |
+| `tag` | no |The list of tag **(name, value)** pairs that can be used to index the contract for faster retrieval|
+| `tag[].name` | yes | Name of a tag |
+| `tag[].value` | yes | The value of the named tag. It can be a constant or a reference to a variable declared in var[], and can be null if the variable is not set|
+| `contract` | yes | A list of human-readable descriptions of the contract|
+| `contract[].lang` | yes |A 2-letter code of the language used for the contract|
+| `contract[].title` | yes | A short title|
+| `contract[].description` | yes |A human-readable descriptions of the contract|
+| `var` | no | The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract |
+| `var[].id` | no |The local identifier used to dereference the variable|
+| `var[].value` | no | The value of the variable. Once set, it cannot be modified or removed from the contract |
+| `var[].(regexp|type)` | no | Restricts the set of values the variable can take if it is still undefined, ignored otherwise |
+| `subject` | yes |The list of subjects who may perform the operations described in the contract|
+| `subject[].id` | yes | The local identifier used to dereference the subject |
+| `subject[].attribute` | yes | A list of expressions on the subject attributes that must satisfied in order for the subject to be considered in that group.|
+| `verb` | yes | The list of allowed operations |
+| `verb[].id` | yes |The local identifier used to dereference the verb|
+| `verb[].function` | yes | The actual command represented by the verb (e.g., method identifier, query pattern,...) |
+| `verb[].attribute` | yes | A list of additional attributes describing the verb|
+| `object` | yes | The list of resources that subjects are permitted to operate on |
+| `object[].id` | yes |The local identifier used to dereference the object.|
+| `object[].owner` | yes | Local identifier of the object owner. |
+| `object[].attribute` | yes |A list of expressions on the object attributes that must satisfied in order for the object to be considered in that group.|
+| `scope` | yes | The list of permitted **subject, verb, object** triplets. |
+| `validity` | yes |The conditions used to verify the validity of the contract.|
+
+
+<details><summary>Example of Contrat Body in Json format</summary>
+<p>
 
 ```json
 {
@@ -99,4 +132,89 @@ A contract is readable by both people and machines. It is also cryptographically
 }
 ```
 
-* Digital Signatures
+</p>
+</details>
+
+**Digital Signatures**
+
+
+Contract signatures are unforgeable and non-repudiable proofs that a user has agreed to a contract.
+The JSON signature consists of a header and a seal.
+
+**Elements of Signature**
+
+| Entry| Required| Description|
+| --- | --- | --- |
+| `id` | yes | A globally unique signature identifier |
+| `header.body` | yes |Verifiable reference to the contract body: its identity, base64 digest (hash) and method used to compute the digest|
+| `header.body.id` | yes | The contract's identity |
+| `header.body.digestMethod` | yes | The methods used to compute the contract's digest|
+| `header.body.digest` | yes | The current contract's digest.|
+| `header.prev` | no |The verifiable reference to a previous signature if any, otherwise it must not appear in the signature.|
+| `header.prev.id` | yes | The previous signature's identity.|
+| `header.prev.digestMethod` | yes | The methods used to compute the previous signature:21's digest.|
+| `header.prev.digest` | yes | The previous contract's digest. |
+| `seal[].signee` | yes |The identity and public key of the user signing the document|
+| `seal[].timestamp` | yes | The signature timestamp, and a nonce |
+| `seal[].source` | yes | The hash or unique representation of inputs and method used to create the contract body and signature, so that it can be used to deduplicate signatures |
+| `seal[].signature` | yes | The base64 digest of the header part (everything between { and } included) encrypted with the secret key of the header.signee using the seal.signatureMethod |
+| `seal[].signatureMethod` | yes | Signature method, subsums the header digest method|
+
+
+
+
+
+<details><summary>Example Of Json Signature </summary>
+<p>
+
+
+```
+{
+
+  "id": "did:custodian:12345678zyxwvut",
+
+
+  "header": {
+
+      "body": {
+
+          "id": "did:custodian:12345678abcdefgh",
+
+          "digestMethod": "SHA256base64",
+
+          "digest": "H/y/vkDEqVOeisYHEJynZJ7FnzGmJgNqbYOZEIBN1l4="
+
+      },
+
+      "prev": {
+
+          "id": "did:custodian:87654321zyxwvu",
+
+          "digestMethod": "SHA256base64",
+
+          "digest": "Yqca1ey8ltbDI7eApqRrzVa0IcKSoRPLL6poGSJln/Y="
+
+      },
+
+  },
+
+
+  "seal": [ {
+
+      "signee": "did:custodian:12345678abcdefgh?kid=00123456habc123",
+
+      "timestamp": "2022-05-01T19:07:31Z",
+
+      "source": "bd4299f40251028465a541e52e1c24f3de5703c048ecce0f12ffeb95a06845a3",
+
+      "signatureMethod": "ECDSA",
+
+      "signature": "SumXX3esbBrXIsfafJCYQXAruPGX4DgSoGlD/ozKtO5AY98ErTQX/NGpOGaKNwCkResqtG9IeuyvdDh7eJMcWw=="
+
+  } ]
+
+}
+```
+
+</p>
+</details>
