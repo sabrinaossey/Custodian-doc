@@ -13,12 +13,12 @@ A contract consist of a contract body that describes the terms of the contract a
 | Entry| Required| Description| Schema|
 | --- | --- | --- |--- |
 | `id` | yes | A globally unique contract identifier | -|
-| `tag` | no |The list of tag **(name, value)** pairs that can be used to index the contract for faster retrieval| [Tag](./schema.md#Tag)|
-| `contract` | yes | A list of human-readable descriptions of the contract| [Contract](./schema.md#Contract)|
-| `var` | no | The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract | [Var](./schema.md#Var)|
-| `subject` | yes |The list of subjects who may perform the operations described in the contract| [Subject](./schema.md#Subject)|
-| `verb` | yes | The list of allowed operations | [Verb](./schema.md#Verb)|
-| `object` | yes | The list of resources that subjects are permitted to operate on | [Object](./schema.md#Object)|
+| `tag` | no |The list of tag **(name, value)** pairs that can be used to index the contract for faster retrieval| List of [Tag](./schema.md#tag)|
+| `contract` | yes | A list of human-readable descriptions of the contract| List of [Contract](./schema.md#contract)|
+| `var` | no | The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract | List of [Var](./schema.md#var)|
+| `subject` | yes |The list of subjects who may perform the operations described in the contract| List of [Subject](./schema.md#subject)|
+| `verb` | yes | The list of allowed operations | List of [Verb](./schema.md#verb)|
+| `object` | yes | The list of resources that subjects are permitted to operate on | List of [Object](./schema.md#object)|
 | `scope` | yes | The list of permitted **subject, verb, object** triplets. | -|
 | `validity` | yes |The conditions used to verify the validity of the contract.| -|
 
