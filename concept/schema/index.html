@@ -506,6 +506,7 @@
   <h1>Schema</h1>
 
 <h2 id="tag">Tag</h2>
+<p>The list of tag <strong>(name, value)</strong> pairs that can be used to index the contract for faster retrieval</p>
 <table>
 <thead>
 <tr>
@@ -515,20 +516,17 @@
 </thead>
 <tbody>
 <tr>
-<td><code>tag</code></td>
-<td>The list of tag <strong>(name, value)</strong> pairs that can be used to index the contract for faster retrieval</td>
-</tr>
-<tr>
-<td><code>tag[].name</code></td>
+<td><code>name</code></td>
 <td>Name of a tag</td>
 </tr>
 <tr>
-<td><code>tag[].value</code></td>
+<td><code>value</code></td>
 <td>The value of the named tag. It can be a constant or a reference to a variable declared in var[], and can be null if the variable is not set</td>
 </tr>
 </tbody>
 </table>
 <h2 id="contract">Contract</h2>
+<p>A list of human-readable descriptions of the contract</p>
 <table>
 <thead>
 <tr>
@@ -538,24 +536,21 @@
 </thead>
 <tbody>
 <tr>
-<td><code>contract</code></td>
-<td>A list of human-readable descriptions of the contract</td>
-</tr>
-<tr>
-<td><code>contract[].lang</code></td>
+<td><code>lang</code></td>
 <td>A 2-letter code of the language used for the contract</td>
 </tr>
 <tr>
-<td><code>contract[].title</code></td>
+<td><code>title</code></td>
 <td>A short title</td>
 </tr>
 <tr>
-<td><code>contract[].description</code></td>
+<td><code>description</code></td>
 <td>A human-readable descriptions of the contract</td>
 </tr>
 </tbody>
 </table>
 <h2 id="var">Var</h2>
+<p>The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract</p>
 <table>
 <thead>
 <tr>
@@ -565,24 +560,21 @@
 </thead>
 <tbody>
 <tr>
-<td><code>var</code></td>
-<td>The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract</td>
-</tr>
-<tr>
-<td><code>var[].id</code></td>
+<td><code>id</code></td>
 <td>The local identifier used to dereference the variable</td>
 </tr>
 <tr>
-<td><code>var[].value</code></td>
+<td><code>value</code></td>
 <td>The value of the variable. Once set, it cannot be modified or removed from the contract</td>
 </tr>
 <tr>
-<td><code>var[].(regexp|type)</code></td>
+<td><code>regexp</code></td>
 <td>Restricts the set of values the variable can take if it is still undefined, ignored otherwise</td>
 </tr>
 </tbody>
 </table>
 <h2 id="subject">Subject</h2>
+<p>The list of subjects who may perform the operations described in the contract</p>
 <table>
 <thead>
 <tr>
@@ -592,20 +584,17 @@
 </thead>
 <tbody>
 <tr>
-<td><code>subject</code></td>
-<td>The list of subjects who may perform the operations described in the contract</td>
-</tr>
-<tr>
-<td><code>subject[].id</code></td>
+<td><code>id</code></td>
 <td>The local identifier used to dereference the subject</td>
 </tr>
 <tr>
-<td><code>subject[].attribute</code></td>
+<td><code>attribute</code></td>
 <td>A list of expressions on the subject attributes that must satisfied in order for the subject to be considered in that group.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="verb">Verb</h2>
+<p>The list of allowed operations</p>
 <table>
 <thead>
 <tr>
@@ -615,24 +604,21 @@
 </thead>
 <tbody>
 <tr>
-<td><code>verb</code></td>
-<td>The list of allowed operations</td>
-</tr>
-<tr>
-<td><code>verb[].id</code></td>
+<td><code>id</code></td>
 <td>The local identifier used to dereference the verb</td>
 </tr>
 <tr>
-<td><code>verb[].function</code></td>
+<td><code>function</code></td>
 <td>The actual command represented by the verb (e.g., method identifier, query pattern,...)</td>
 </tr>
 <tr>
-<td><code>verb[].attribute</code></td>
+<td><code>attribute</code></td>
 <td>A list of additional attributes describing the verb</td>
 </tr>
 </tbody>
 </table>
 <h2 id="object">Object</h2>
+<p>The list of resources that subjects are permitted to operate on</p>
 <table>
 <thead>
 <tr>
@@ -642,19 +628,15 @@
 </thead>
 <tbody>
 <tr>
-<td><code>object</code></td>
-<td>The list of resources that subjects are permitted to operate on</td>
-</tr>
-<tr>
-<td><code>object[].id</code></td>
+<td><code>id</code></td>
 <td>The local identifier used to dereference the object.</td>
 </tr>
 <tr>
-<td><code>object[].owner</code></td>
+<td><code>owner</code></td>
 <td>The Local identifier of the object owner.</td>
 </tr>
 <tr>
-<td><code>object[].attribute</code></td>
+<td><code>attribute</code></td>
 <td>A list of expressions on the object attributes that must satisfied in order for the object to be considered in that group.</td>
 </tr>
 </tbody>
