@@ -13,7 +13,7 @@
     
     
       
-        <title>Contract Manager - Custodian</title>
+        <title>Event Tracking System - Custodian</title>
       
     
     
@@ -62,7 +62,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contract-manager" class="md-skip">
+        <a href="#event-tracking-system" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Contract Manager
+              Event Tracking System
             
           </span>
         </div>
@@ -442,21 +442,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#contract-description" class="md-nav__link">
-    Contract Description
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -470,316 +455,17 @@
                   
 
 
-<h1 id="contract-manager">Contract Manager</h1>
-<p>The Contract Manager provides REST end-points to create and manage contracts.</p>
-<p>A Contract is a binding agreement between parties based on agreed-upon terms and conditions for data sharing and processing.
-A contract is readable by both people and machines. It is also cryptographically signed and verified against some security proofs.</p>
-<h2 id="contract-description">Contract Description</h2>
-<p>A contract consist of a contract body that describes the terms of the contract and a list of digital signatures of the parties involved in.</p>
-<p><strong>Elements of Contract Body</strong></p>
-<table>
-<thead>
-<tr>
-<th>Entry</th>
-<th>Required</th>
-<th>Description</th>
-<th>Schema</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id</code></td>
-<td>yes</td>
-<td>A globally unique contract identifier</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>tag</code></td>
-<td>no</td>
-<td>The list of tag <strong>(name, value)</strong> pairs that can be used to index the contract for faster retrieval</td>
-<td>List of <a href="../schema/#tag">Tag</a></td>
-</tr>
-<tr>
-<td><code>contract</code></td>
-<td>yes</td>
-<td>A list of human-readable descriptions of the contract</td>
-<td>List of <a href="../schema/#contract">Contract</a></td>
-</tr>
-<tr>
-<td><code>var</code></td>
-<td>no</td>
-<td>The list of values that can be dereferenced in other part of the contract body, or template parameter whose values are defined in subsequent versions of the contract</td>
-<td>List of <a href="../schema/#var">Var</a></td>
-</tr>
-<tr>
-<td><code>subject</code></td>
-<td>yes</td>
-<td>The list of subjects who may perform the operations described in the contract</td>
-<td>List of <a href="../schema/#subject">Subject</a></td>
-</tr>
-<tr>
-<td><code>verb</code></td>
-<td>yes</td>
-<td>The list of allowed operations</td>
-<td>List of <a href="../schema/#verb">Verb</a></td>
-</tr>
-<tr>
-<td><code>object</code></td>
-<td>yes</td>
-<td>The list of resources that subjects are permitted to operate on</td>
-<td>List of <a href="../schema/#object">Object</a></td>
-</tr>
-<tr>
-<td><code>scope</code></td>
-<td>yes</td>
-<td>The list of permitted <strong>subject, verb, object</strong> triplets.</td>
-<td>-</td>
-</tr>
-<tr>
-<td><code>validity</code></td>
-<td>yes</td>
-<td>The conditions used to verify the validity of the contract.</td>
-<td>-</td>
-</tr>
-</tbody>
-</table>
-<details><summary>Example of Contrat Body in Json format</summary>
-<p>
-
-
-<pre><code class="language-json">{
-  &quot;id&quot;: &quot;did:custodian:12345678abcdefgh&quot;,
-  &quot;tag&quot;: [
-      {
-          &quot;name&quot;: &quot;provider&quot;,
-          &quot;value&quot;: &quot;#provider&quot;
-      },
-      {
-          &quot;name&quot;: &quot;consumer&quot;,
-          &quot;value&quot;: &quot;#consumer&quot;
-      },
-  ],
-  &quot;contract&quot;: [
-      {
-         &quot;lang&quot;: &quot;en&quot;,
-         &quot;title&quot;: &quot;End User Agreement&quot;,
-        &quot;description&quot;: &quot;...&quot;,
-      }
-  ],
-  &quot;var&quot;: [
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#provider&quot;,
-          &quot;type&quot;:  &quot;oid&quot;,
-          &quot;regexp&quot;: &quot;did:custodian:[0-9a-zA-Z_-]&quot;
-      },
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#consumer&quot;,
-          &quot;value&quot;: &quot;did:custodian:1234abcd5678efgh&quot;
-      }
-  ],
-  &quot;subject&quot;:  [
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#subj-1&quot;,
-          &quot;attribute&quot;: {
-            &quot;oid&quot;:  &quot;#provider&quot;,
-            &quot;sign&quot;: [ &quot;#id&quot; ]
-          }
-      },
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#subj-2&quot;,
-          &quot;attribute&quot;: {
-              &quot;oid&quot;:  &quot;#consumer&quot;,
-              &quot;sign&quot;: [ &quot;#id&quot; ]
-          }
-      }
-  ],
-  &quot;verb&quot;: [
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#read&quot;,
-          &quot;function&quot;: &quot;custodian.epfl.ch/select?query=*&quot;,
-          &quot;attribute&quot;: {
-              &quot;max_calls_per_day&quot;: 3
-          }
-      },
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#add&quot;,
-          &quot;function&quot;: &quot;custodian.epfl.ch/add&quot;,
-          &quot;attribute&quot;: {}
-      }
-  ],
-  &quot;object&quot;: [
-      {
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh#obj-1&quot;,
-          &quot;owner&quot;: &quot;#subj-1&quot;,
-          &quot;attribute&quot;: {
-              &quot;sensitivity&quot;: {
-                  &quot;op&quot;: &quot;lt&quot;,
-                  &quot;level&quot;: 7
-              }
-        }
-      }
-  ],
-  &quot;scope&quot;:  [
-      {
-          &quot;subject&quot;: [ &quot;#subj-1&quot;, &quot;#subj-2&quot; ], &quot;verb&quot;: [ &quot;#read&quot; ], &quot;object&quot;: [ &quot;#obj-1&quot; ]
-      },
-      {
-          &quot;subject&quot;: [ &quot;#subj-2&quot; ], &quot;verb&quot;: [ &quot;#add&quot; ], &quot;object&quot;: [ &quot;#obj-1&quot; ]
-      }
-  ],
-  &quot;validity&quot;: {
-      &quot;notBefore&quot; : &quot;2022-01-01T00:00:00Z&quot;,
-      &quot;notAfter&quot;  : &quot;2022-12-01T23:59:59Z&quot;,
-      &quot;duration&quot;   : &quot;1Y&quot;,
-      &quot;sign&quot; : [ &quot;#provider&quot;, &quot;#consumer&quot; ]
-   }
-}
-</code></pre>
-
-
-</p>
-</details>
-
-<p><strong>Digital Signatures</strong></p>
-<p>Contract signatures are unforgeable and non-repudiable proofs that a user has agreed to a contract.
-The JSON signature consists of a header and a seal.</p>
-<p><strong>Elements of Signature</strong></p>
-<table>
-<thead>
-<tr>
-<th>Entry</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>id</code></td>
-<td>yes</td>
-<td>A globally unique signature identifier</td>
-</tr>
-<tr>
-<td><code>header.body</code></td>
-<td>yes</td>
-<td>Verifiable reference to the contract body: its identity, base64 digest (hash) and method used to compute the digest</td>
-</tr>
-<tr>
-<td><code>header.body.id</code></td>
-<td>yes</td>
-<td>The contract's identity</td>
-</tr>
-<tr>
-<td><code>header.body.digestMethod</code></td>
-<td>yes</td>
-<td>The methods used to compute the contract's digest</td>
-</tr>
-<tr>
-<td><code>header.body.digest</code></td>
-<td>yes</td>
-<td>The current contract's digest.</td>
-</tr>
-<tr>
-<td><code>header.prev</code></td>
-<td>no</td>
-<td>The verifiable reference to a previous signature if any, otherwise it must not appear in the signature.</td>
-</tr>
-<tr>
-<td><code>header.prev.id</code></td>
-<td>yes</td>
-<td>The previous signature's identity.</td>
-</tr>
-<tr>
-<td><code>header.prev.digestMethod</code></td>
-<td>yes</td>
-<td>The methods used to compute the previous signature:21's digest.</td>
-</tr>
-<tr>
-<td><code>header.prev.digest</code></td>
-<td>yes</td>
-<td>The previous contract's digest.</td>
-</tr>
-<tr>
-<td><code>seal[].signee</code></td>
-<td>yes</td>
-<td>The identity and public key of the user signing the document</td>
-</tr>
-<tr>
-<td><code>seal[].timestamp</code></td>
-<td>yes</td>
-<td>The signature timestamp, and a nonce</td>
-</tr>
-<tr>
-<td><code>seal[].source</code></td>
-<td>yes</td>
-<td>The hash or unique representation of inputs and method used to create the contract body and signature, so that it can be used to deduplicate signatures</td>
-</tr>
-<tr>
-<td><code>seal[].signature</code></td>
-<td>yes</td>
-<td>The base64 digest of the header part (everything between { and } included) encrypted with the secret key of the header.signee using the seal.signatureMethod</td>
-</tr>
-<tr>
-<td><code>seal[].signatureMethod</code></td>
-<td>yes</td>
-<td>Signature method, subsums the header digest method</td>
-</tr>
-</tbody>
-</table>
-<details><summary>Example Of Json Signature </summary>
-<p>
-
-
-
-<pre><code>{
-
-  &quot;id&quot;: &quot;did:custodian:12345678zyxwvut&quot;,
-
-
-  &quot;header&quot;: {
-
-      &quot;body&quot;: {
-
-          &quot;id&quot;: &quot;did:custodian:12345678abcdefgh&quot;,
-
-          &quot;digestMethod&quot;: &quot;SHA256base64&quot;,
-
-          &quot;digest&quot;: &quot;H/y/vkDEqVOeisYHEJynZJ7FnzGmJgNqbYOZEIBN1l4=&quot;
-
-      },
-
-      &quot;prev&quot;: {
-
-          &quot;id&quot;: &quot;did:custodian:87654321zyxwvu&quot;,
-
-          &quot;digestMethod&quot;: &quot;SHA256base64&quot;,
-
-          &quot;digest&quot;: &quot;Yqca1ey8ltbDI7eApqRrzVa0IcKSoRPLL6poGSJln/Y=&quot;
-
-      },
-
-  },
-
-
-  &quot;seal&quot;: [ {
-
-      &quot;signee&quot;: &quot;did:custodian:12345678abcdefgh?kid=00123456habc123&quot;,
-
-      &quot;timestamp&quot;: &quot;2022-05-01T19:07:31Z&quot;,
-
-      &quot;source&quot;: &quot;bd4299f40251028465a541e52e1c24f3de5703c048ecce0f12ffeb95a06845a3&quot;,
-
-      &quot;signatureMethod&quot;: &quot;ECDSA&quot;,
-
-      &quot;signature&quot;: &quot;SumXX3esbBrXIsfafJCYQXAruPGX4DgSoGlD/ozKtO5AY98ErTQX/NGpOGaKNwCkResqtG9IeuyvdDh7eJMcWw==&quot;
-
-  } ]
-
-}
-</code></pre>
-
-
-</p>
-</details>
+<h1 id="event-tracking-system">Event Tracking System</h1>
+<p>This system enables data owners to trace data journey and answer the following questions:
+- where is the data hosted (which IAD)?
+- what data is being accessed, since when, until when?
+- what application has access to the data, from where, and on whom's behalf?
+- what post-processing results came out of the data?
+- who has access to the results?
+- Who tries to access a resource without authorization?</p>
+<p>Governance bodies can audit the events and verify that contracts are respected.
+The data controllers can use these events to demonstrate compliance with data protection laws. Data providers can define data usage metrics for analyzing data consumption based on these events.
+Finally, these events are a source of contextual information for the Policy Information Point (PIP). In the future, we envision an intelligent Adaptive Privacy Based Access Control that uses this contextual information as knowledge to dynamically grant data access based on privacy scores and privacy budget.</p>
 
 
 
