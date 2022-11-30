@@ -1,4 +1,4 @@
-#Contract Manager
+# Contract Manager
 The Contract Manager provides REST end-points to create and manage contracts.
 
 A Contract is a binding agreement between parties based on agreed-upon terms and conditions for data sharing and processing.
