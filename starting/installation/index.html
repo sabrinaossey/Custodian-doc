@@ -265,15 +265,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-with-docker" class="md-nav__link">
-    Installing with docker
+  <a href="#install-with-docker" class="md-nav__link">
+    Install with Docker
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-with-kubernetes" class="md-nav__link">
-    Installing with Kubernetes
+  <a href="#install-with-kubernetes" class="md-nav__link">
+    Install with Kubernetes
   </a>
   
 </li>
@@ -513,15 +513,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-with-docker" class="md-nav__link">
-    Installing with docker
+  <a href="#install-with-docker" class="md-nav__link">
+    Install with Docker
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#installing-with-kubernetes" class="md-nav__link">
-    Installing with Kubernetes
+  <a href="#install-with-kubernetes" class="md-nav__link">
+    Install with Kubernetes
   </a>
   
 </li>
@@ -543,30 +543,35 @@
 
 <h1 id="installation">Installation</h1>
 <h2 id="pre-requisites">Pre-requisites</h2>
-<h2 id="installing-with-docker">Installing with docker</h2>
+<h2 id="install-with-docker">Install with Docker</h2>
 <ol>
 <li>
-<p><a href="https://docs.docker.com/engine/install/ubuntu/">Install docker and docker-compose</a></p>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">Install Docker and Compose</a></p>
 </li>
 <li>
-<p>Copy the Custodian Directory</p>
+<p>Copy the Custodian directory</p>
 </li>
 </ol>
-<pre><code class="language-bat">  git cLone https://gitlab.com/data-custodian/custodian.git
+<pre><code class="language-bat">  git clone https://gitlab.com/data-custodian/custodian.git
 </code></pre>
 <ol>
-<li>Install the Swiss Data Custodian</li>
+<li>Launch the Swiss Data Custodian</li>
 </ol>
 <pre><code class="language-bat">docker compose -f core/ucm/docker-compose.yml up --build
 docker compose -f core/acs/docker-compose.yml up --build
 docker compose -f core/epp/docker-compose.yml up --build
 
 </code></pre>
-<h2 id="installing-with-kubernetes">Installing with Kubernetes</h2>
+<h2 id="install-with-kubernetes">Install with Kubernetes</h2>
+<ol>
+<li>Install kubectl</li>
+</ol>
+<pre><code class="language-bat">curl -L https://storage.googleapis.com/kubernetes-release/release/v1.22.1/bin/linux/amd64/kubectl -o /bin/kubectl &amp;&amp; chmod +x /bin/kubectl
+</code></pre>
 <ol>
 <li>Install Kompose</li>
 </ol>
-<pre><code class="language-bat">curl -L https://storage.googleapis.com/kubernetes-release/release/${CI__KU_VERSION}/bin/linux/amd64/kubectl -o /bin/kubectl &amp;&amp; chmod +x /bin/kubectl
+<pre><code class="language-bat">curl -L https://github.com/kubernetes/kompose/releases/download/v1.24.0/kompose-linux-amd64 -o /bin/kompose
 </code></pre>
 
 
