@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#contributing-to-swiss-data-custodian" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -270,9 +275,59 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Contributing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Contributing
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-swiss-data-custodian" class="md-nav__link">
+    Contributing to Swiss Data Custodian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-process-summary" class="md-nav__link">
+    Development process - summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#develop-your-contribution" class="md-nav__link">
+    Develop your contribution:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-submit-your-contribution" class="md-nav__link">
+    To submit your contribution:
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -475,6 +530,42 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#contributing-to-swiss-data-custodian" class="md-nav__link">
+    Contributing to Swiss Data Custodian
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-process-summary" class="md-nav__link">
+    Development process - summary
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#develop-your-contribution" class="md-nav__link">
+    Develop your contribution:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-submit-your-contribution" class="md-nav__link">
+    To submit your contribution:
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -490,60 +581,58 @@
 
   <h1>Contributing</h1>
 
-<p>Contributing to Swiss Data Custodian</p>
+<h2 id="contributing-to-swiss-data-custodian">Contributing to Swiss Data Custodian</h2>
 <p>These are all activities we’d like to get help with:</p>
-<pre><code>Code maintenance and development
-
-Community coordination
-
-DevOps
-
-Developing educational content &amp; narrative documentation
-
-Website design and development
-
-Writing technical documentation
-</code></pre>
+<ul>
+<li>Code maintenance and development</li>
+<li>Community coordination</li>
+<li>DevOps</li>
+<li>Developing educational content &amp; narrative documentation</li>
+<li>Website design and development</li>
+<li>Writing technical documentation</li>
+</ul>
 <p>If you are interested in these other activities, please contact us! You can do this via on GitHub.</p>
-<p>Development process - summary
-  If you are a first-time contributor:</p>
-<pre><code>    Go to https://gitlab.com/data-custodian/custodian and click the “fork” button to create your own copy of the project.
-
-    Clone the project to your local computer:
-
-    git clone https://github.com/your-username/custodian.git
-
-    Change the directory:
-
-    cd custodian
-
-
-
-Develop your contribution:
-
-    Pull the latest changes from upstream:
-
-    git checkout develop
-    git pull develop
-
-    Create a branch for the feature you want to work on. Since the branch name will appear in the merge message, use a sensible gitname.
-
-    git checkout -b name
-
-    Commit locally as you progress (git add and git commit) Use a properly formatted commit message, write tests that fail before your change and pass afterward, run all the tests locally. Be sure to document any changed behavior.
-
-To submit your contribution:
-
-    Push your changes back to your fork on GitHub:
-
-    git push origin gitname
-
-    Enter your GitHub username and password (repeat contributors or advanced users can remove this step by connecting to GitHub with SSH).
-
-    Go to GitHub. The new branch will show up with a green Pull Request button. Make sure the title and message are clear, concise, and self- explanatory. Then click the button to submit it.
-
-    If your commit introduces a new feature or changes functionality, post on the mailing list to explain your changes. For bug fixes, documentation updates, etc., this is generally not necessary, though if you do not get any reaction, do feel free to ask for review.
+<h2 id="development-process-summary">Development process - summary</h2>
+<p>If you are a first-time contributor:</p>
+<ul>
+<li>Go to:</li>
+</ul>
+<pre><code class="language-bat">https://gitlab.com/data-custodian/custodian
 </code></pre>
+<p>and click the “fork” button to create your own copy of the project.</p>
+<ul>
+<li>Clone the project to your local computer:</li>
+</ul>
+<pre><code class="language-bat">git clone https://github.com/your-username/custodian.git
+</code></pre>
+<ul>
+<li>Change the directory:</li>
+</ul>
+<pre><code class="language-bat">cd custodian
+</code></pre>
+<h2 id="develop-your-contribution">Develop your contribution:</h2>
+<p>Pull the latest changes from upstream:</p>
+<pre><code class="language-bat">git checkout develop
+</code></pre>
+<pre><code class="language-bat">git pull develop
+</code></pre>
+<ul>
+<li>Create a branch for the feature you want to work on. Since the branch name will appear in the merge message, use a sensible gitname.</li>
+</ul>
+<pre><code class="language-bat">git checkout -b name
+</code></pre>
+<ul>
+<li>Commit locally as you progress (git add and git commit) Use a properly formatted commit message, write tests that fail before your change and pass afterward, run all the tests locally. Be sure to document any changed behavior.</li>
+</ul>
+<h2 id="to-submit-your-contribution">To submit your contribution:</h2>
+<p>Push your changes back to your fork on GitHub:</p>
+<pre><code class="language-bat">git push origin gitname
+</code></pre>
+<ul>
+<li>Enter your GitHub username and password (repeat contributors or advanced users can remove this step by connecting to GitHub with SSH).</li>
+<li>Go to GitHub. The new branch will show up with a green Pull Request button. Make sure the title and message are clear, concise, and self- explanatory. Then click the button to submit it.</li>
+<li>If your commit introduces a new feature or changes functionality, post on the mailing list to explain your changes. For bug fixes, documentation updates, etc., this is generally not necessary, though if you do not get any reaction, do feel free to ask for review.</li>
+</ul>
 
 
 
