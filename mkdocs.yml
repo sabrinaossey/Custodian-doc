@@ -2,6 +2,10 @@ site_name: Custodian
 
 theme:
   name: "material"
+  logo: concept/images/logoSDC.png
+  palette:
+    primary: red
+    accent: red
 
 # Page tree
 nav:
