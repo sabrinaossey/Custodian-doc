@@ -9,11 +9,13 @@ nav:
   - Getting started:
     - Quick Installation: starting/installation.md
     - Basic Tutorial: starting/tutorial.md
+    - Code of Conduct: starting/codeofconduct.md
+    - Contributing: starting/contributing.md
   - Concept:
     - Overview: concept/overview.md
     - Components: concept/components.md
   - Roadmap:
     - Future: roadmap/future.md
-    - Releases Notes: roadmap/releaseNotes.md    
+    - Releases Notes: roadmap/releaseNotes.md
   - Reference:
     - Glossary: reference/glossary.md
